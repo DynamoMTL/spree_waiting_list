@@ -1,13 +1,15 @@
-SpreeWaitingList
+Spree Waiting List
 ================
 
-Introduction goes here.
+A waiting list extension for Spree.
+
+User and guests can request to be notified via email when a product/variant comes back in stock.
 
 
-Example
+Installation
 =======
 
-Example goes here.
+Instructions to go here
 
 
-Copyright (c) 2011 [name of extension creator], released under the New BSD License
+Copyright (c) 2011 Joshua Nussbaum, released under the New BSD License
