@@ -8,7 +8,10 @@ describe VariantRequest do
 
   context "notification" do
     before do
+      mail = mock(:mail)
       @request = create_variant_request
+      UserMailer.should_receive(:back_in_stock).with(@request).and_return(mail)
+      mail.should_receive(:deliver)
       @request.notify! 
     end
 

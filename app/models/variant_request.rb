@@ -11,5 +11,11 @@ class VariantRequest < ActiveRecord::Base
     event :notify do
       transition :from => 'new', :to => 'notified'
     end
+
+    after_transition :to => 'notified', :do => :send_email
+  end
+private
+  def send_email
+    UserMailer.back_in_stock(self).deliver
   end
 end
