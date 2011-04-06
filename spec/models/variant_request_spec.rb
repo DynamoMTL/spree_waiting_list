@@ -7,6 +7,14 @@ describe VariantRequest do
   specify { create_variant_request.status.should == 'new' }
 
   context "notification" do
+    before do
+      @request = create_variant_request
+      @request.notify! 
+    end
+
+    specify { @request.status.should == 'notified' }
+    specify { VariantRequest.notified(false).should have(0).variant_requests }
+    specify { VariantRequest.notified(true).should  have(1).variant_requests }
   end
 
   def create_variant_request(fields={})
