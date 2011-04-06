@@ -1,4 +1,4 @@
-class WaitingList < ActiveRecord::Base
+class VariantRequest < ActiveRecord::Base
 	belongs_to :product
 	belongs_to :variant
 	
