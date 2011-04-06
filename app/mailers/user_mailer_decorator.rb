@@ -4,7 +4,7 @@ UserMailer.class_eval do
     @product = request.product
     @variant = request.variant
 
-    mail(:subject => "Hey! #{request.product.name} is back in stock",
+    mail(:subject => t("back_in_stock_subject", :product_name => @product.name),
          :from    => Spree::Config[:order_from],
          :to      => request.email)
   end
