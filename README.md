@@ -3,7 +3,7 @@ Spree Waiting List
 
 A waiting list extension for Spree.
 
-User and guests can request to be notified via email when a product/variant comes back in stock.
+Users and guests can request to be notified via email when a product/variant comes back in stock.
 
 
 Installation
