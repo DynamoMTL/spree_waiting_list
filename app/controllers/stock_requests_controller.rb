@@ -7,7 +7,10 @@ class StockRequestsController < Spree::BaseController
     @stock_request = StockRequest.create(params[:stock_request])
 
     if @stock_request.valid?
-      redirect_to root_path, :notice => t(:successful_stock_request)
+      respond_to do |format|
+        format.html { redirect_to root_path, :notice => t(:successful_stock_request) }
+        format.js
+      end
     else
       render :action => 'new'
     end

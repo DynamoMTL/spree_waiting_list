@@ -17,11 +17,21 @@ describe StockRequestsController do
 
       before do
         StockRequest.should_receive(:create).with(:data).and_return(request)
-        post :create, :stock_request => :data
       end
 
-      specify { response.should redirect_to(root_path) }
-      specify { flash[:notice].should == I18n.t(:successful_stock_request) }
+      context "html format" do
+        before { post :create, :stock_request => :data }
+
+        specify { response.should redirect_to(root_path) }
+        specify { flash[:notice].should == I18n.t(:successful_stock_request) }
+      end
+
+      context "js format" do
+        before { xhr :post, :create, :stock_request => :data }
+
+        specify { response.should be_success }
+        specify { response.should render_template('create') }
+      end
     end
 
     context "invalid data" do
