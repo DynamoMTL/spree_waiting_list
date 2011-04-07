@@ -14,8 +14,11 @@ class StockRequest < ActiveRecord::Base
 
     after_transition :to => 'notified', :do => :send_email
   end
+
 private
+
   def send_email
     UserMailer.back_in_stock(self).deliver
   end
+
 end
