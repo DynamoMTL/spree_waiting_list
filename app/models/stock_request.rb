@@ -8,6 +8,7 @@ class StockRequest < ActiveRecord::Base
   default_scope order('created_at desc')
 
   scope :notified, lambda {|is_notified| where(:status => is_notified ? 'notified' : 'new') }
+  scope :without_variant, where(:variant_id => nil)
 
   state_machine :status, :initial => 'new' do
     event :notify do
