@@ -10,7 +10,7 @@ Admin::ReportsController.class_eval do
         @stock_requests = @search.do_search.paginate(:page => params[:page])
       end
       format.csv do
-        @stock_requests = @search.do_search
+        @stock_requests = @search.do_search.all
       end
     end
   end
