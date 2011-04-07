@@ -5,6 +5,8 @@ class StockRequest < ActiveRecord::Base
 	validates :email, :presence => true, 
                     :format => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
+  default_scope order('created_at desc')
+
   scope :notified, lambda {|is_notified| where(:status => is_notified ? 'notified' : 'new') }
 
   state_machine :status, :initial => 'new' do

@@ -1,6 +1,6 @@
 class StockRequestsController < Spree::BaseController 
   def new
-    @stock_request = StockRequest.new
+    @stock_request = StockRequest.new(params[:stock_request])
   end
 
   def create
