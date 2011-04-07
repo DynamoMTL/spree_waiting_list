@@ -25,6 +25,13 @@ RSpec.configure do |config|
   # examples within a transaction, comment the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.include Devise::TestHelpers, :type => :controller
 end
 
-@configuration ||= AppConfiguration.find_or_create_by_name("Default configuration")
+@createconfiguration ||= AppConfiguration.find_or_create_by_name("Default configuration")
+
+def create_user
+  User.create(:confirmed => true, :password => 'test123', :password_confirmation => 'test123', :email => 'john@example.com') 
+end
+

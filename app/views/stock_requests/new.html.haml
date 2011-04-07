@@ -5,5 +5,8 @@
   = f.hidden_field :variant_id
   %p
     = f.label :email
-    = f.text_field :email
+    - if current_user
+      = current_user.email
+    - else
+      = f.text_field :email
   = f.submit t('submit_stock_request')

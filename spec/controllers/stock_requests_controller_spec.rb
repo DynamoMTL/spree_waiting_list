@@ -13,10 +13,10 @@ describe StockRequestsController do
 
   context "POST /create" do
     context "valid data" do
-      let(:request) { mock_model(StockRequest, :valid? => true) }
+      let(:request) { mock_model(StockRequest, :save => true) }
 
       before do
-        StockRequest.should_receive(:create).with(:data).and_return(request)
+        StockRequest.should_receive(:new).with(:data).and_return(request)
       end
 
       context "html format" do
@@ -32,13 +32,24 @@ describe StockRequestsController do
         specify { response.should be_success }
         specify { response.should render_template('create') }
       end
+
+      context "logged in" do
+        let(:user) { create_user }
+
+        it "should set email" do
+          request.should_receive(:email=).with(user.email)
+          sign_in user
+          post :create, :stock_request => :data
+        end
+      end
     end
 
+
     context "invalid data" do
-      let(:request) { mock_model(StockRequest, :valid? => false) }
+      let(:request) { mock_model(StockRequest, :save => false) }
 
       before do
-        StockRequest.should_receive(:create).with(:data).and_return(request)
+        StockRequest.should_receive(:new).with(:data).and_return(request)
         post :create, :stock_request => :data
       end
   

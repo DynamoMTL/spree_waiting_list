@@ -4,9 +4,10 @@ class StockRequestsController < Spree::BaseController
   end
 
   def create
-    @stock_request = StockRequest.create(params[:stock_request])
+    @stock_request = StockRequest.new(params[:stock_request])
+    @stock_request.email = current_user.email if current_user
 
-    if @stock_request.valid?
+    if @stock_request.save
       respond_to do |format|
         format.html { redirect_to root_path, :notice => t(:successful_stock_request) }
         format.js
