@@ -1,3 +1,4 @@
 ---
 en:
   back_in_stock_subject: Hey! %{product_name} is back in stock 
+  successful_stock_request: Thanks! we will notify you as soon as the item is back in stock
