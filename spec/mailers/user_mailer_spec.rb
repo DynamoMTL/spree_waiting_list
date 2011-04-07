@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UserMailer do
   context "back in stock" do
-    let(:request) { mock_model(VariantRequest, 
+    let(:request) { mock_model(StockRequest, 
                                :email => 'test@123.com',
                                :variant => nil, 
                                :product => mock_model(Product, :name => 'Widget')) }

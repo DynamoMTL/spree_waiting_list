@@ -1,4 +1,4 @@
-class VariantRequest < ActiveRecord::Base
+class StockRequest < ActiveRecord::Base
 	belongs_to :product
 	belongs_to :variant
 	
