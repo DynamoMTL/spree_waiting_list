@@ -1,4 +1,5 @@
 require 'spree_core'
+require 'haml'
 require 'spree_waiting_list_hooks'
 
 module SpreeWaitingList

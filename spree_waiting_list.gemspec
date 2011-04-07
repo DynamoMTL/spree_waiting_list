@@ -9,7 +9,6 @@ Gem::Specification.new do |s|
   s.author            = 'Joshua Nussbaum'
   s.email             = 'joshnuss@gmail.com'
   s.homepage          = 'http://www.godynamo.com'
-  s.rubyforge_project = 'actionmailer'
 
   s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*']
   s.require_path = 'lib'
@@ -18,4 +17,5 @@ Gem::Specification.new do |s|
   s.has_rdoc = false
 
   s.add_dependency('spree_core', '>= 0.40.0')
+  s.add_dependency('haml', '> 0')
 end
