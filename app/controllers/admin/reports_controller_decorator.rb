@@ -3,14 +3,14 @@ Admin::ReportsController::AVAILABLE_REPORTS[:stock_requests] = {:name => 'Stock 
 Admin::ReportsController.class_eval do
 
   def stock_requests
-    @search = StockRequest.searchlogic(params[:search])
+    @search = StockRequest.search(params[:search])
 
     respond_to do |format|
       format.html do
-        @stock_requests = @search.do_search.paginate(:page => params[:page])
+        @stock_requests = @search.paginate(:page => params[:page])
       end
       format.csv do
-        @stock_requests = @search.do_search.all
+        @stock_requests = @search.all
       end
     end
   end

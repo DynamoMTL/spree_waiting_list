@@ -1,18 +1,18 @@
 .toolbar
   %ul.actions
     %li
-      = button_link_to t("download"), stock_requests_admin_reports_path(@search.conditions.merge(:format => :csv)), {:icon => 'xls'}
+      = button_link_to t("download"), stock_requests_admin_reports_path(@search.search_attributes.merge(:format => :csv)), {:icon => 'xls'}
   %br.clear
 
 %h1= t(:stock_requests)
 
 %table.index
   %tr
-    %th= order @search, :by => :email
+    %th= sort_link @search, :email
     %th= t(:product)
     %th= t(:variant)
-    %th= order @search, :by => :status
-    %th= order @search, :by => :created_at, :as => t(:requested)
+    %th= sort_link @search, :status
+    %th= sort_link @search, :created_at, t(:requested)
 
   - @stock_requests.each do |stock_request|
     %tr{:class => cycle('even','odd')}
