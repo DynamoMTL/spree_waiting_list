@@ -27,7 +27,7 @@
 = will_paginate(@stock_requests, :previous_label => "&#171; #{t('previous')}", :next_label => "#{t('next')} &#187;")
 
 - content_for :sidebar do
-  = form_for @search do |f|
+  = form_for @search, :url => stock_requests_admin_reports_path do |f|
     .box
       %h3= t(:search)
       %p
