@@ -16,7 +16,7 @@
 
   - @stock_requests.each do |stock_request|
     %tr{:class => cycle('even','odd')}
-      %td= stock_request.email 
+      %td= stock_request.email
       %td= link_to stock_request.product.name, edit_admin_product_path(stock_request.product)
       %td= stock_request.variant.options_text if stock_request.variant
       %td= stock_request.status.titleize
@@ -24,7 +24,7 @@
         = time_ago_in_words(stock_request.created_at)
         = t(:ago)
 
-= will_paginate(@stock_requests, :previous_label => "&#171; #{t('previous')}", :next_label => "#{t('next')} &#187;")
+= paginate @stock_requests
 
 - content_for :sidebar do
   = form_for @search, :url => stock_requests_admin_reports_path do |f|
