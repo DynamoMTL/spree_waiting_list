@@ -17,6 +17,5 @@ Gem::Specification.new do |s|
   s.has_rdoc = false
 
   s.add_dependency('spree_core', '>= 0.60.0')
-		therubyracer or node.js
   s.add_dependency('haml', '> 0')
 end
