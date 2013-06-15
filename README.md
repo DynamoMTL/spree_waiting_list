@@ -1,15 +1,21 @@
-Spree Waiting List
+SpreeWaitingList
 ================
 
-A waiting list extension for Spree.
-
-Users and guests can request to be notified via email when a product/variant comes back in stock.
+Introduction goes here.
 
 
-Installation
+Example
 =======
 
-Instructions to go here
+Example goes here.
 
+Testing
+-------
 
-Copyright (c) 2011 Joshua Nussbaum, released under the New BSD License
+Be sure to bundle your dependencies and then create a dummy test app for the specs to run against.
+
+    $ bundle
+    $ bundle exec rake test_app
+    $ bundle exec rspec spec
+
+Copyright (c) 2013 [name of extension creator], released under the New BSD License

@@ -1,4 +1,4 @@
-class StockRequestsController < Spree::BaseController 
+class Spree::StockRequestsController < Spree::BaseController
   def new
     @stock_request = StockRequest.new(params[:stock_request])
   end

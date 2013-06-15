@@ -1,9 +1,10 @@
-Rails.application.routes.draw do
-  resources :stock_requests
-
+Spree::Core::Engine.routes.prepend do
   namespace :admin do
-    resources :reports, :only => [:index, :show] do
-      get 'stock_requests', :on => :collection
+    resources :reports, :only => [] do
+      collection do
+        get  :stock_requests
+        post :stock_requests
+      end
     end
   end
 end

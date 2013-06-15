@@ -1,6 +1,6 @@
-class CreateWaitingLists < ActiveRecord::Migration
+class CreateStockRequests < ActiveRecord::Migration
   def self.up
-    create_table :waiting_lists do |t|
+    create_table :spree_stock_requests do |t|
       t.string :email
       t.integer :product_id
       t.integer :variant_id
@@ -11,6 +11,6 @@ class CreateWaitingLists < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :waiting_lists
+    drop_table :spree_stock_requests
   end
 end

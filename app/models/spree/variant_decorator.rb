@@ -1,4 +1,4 @@
-Variant.class_eval do
+Spree::Variant.class_eval do
   has_many :stock_requests
 
   around_save :notify_availability
