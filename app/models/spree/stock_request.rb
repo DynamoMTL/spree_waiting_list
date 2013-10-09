@@ -1,6 +1,6 @@
 module Spree
   class StockRequest < ActiveRecord::Base
-    attr_accessible :product_id, :variant_id
+    attr_accessible :product_id, :variant_id, :email
     belongs_to :product
     belongs_to :variant
 
