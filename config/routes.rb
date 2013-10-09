@@ -1,4 +1,5 @@
 Spree::Core::Engine.routes.prepend do
+  resources :stock_requests
   namespace :admin do
     resources :reports, :only => [] do
       collection do
