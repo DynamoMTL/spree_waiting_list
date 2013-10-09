@@ -1,10 +1,10 @@
 class Spree::StockRequestsController < Spree::BaseController
   def new
-    @stock_request = StockRequest.new(params[:stock_request])
+    @stock_request = Spree::StockRequest.new(params[:stock_request])
   end
 
   def create
-    @stock_request = StockRequest.new(params[:stock_request])
+    @stock_request = Spree::StockRequest.new(params[:stock_request])
     @stock_request.email = current_user.email if current_user
 
     if @stock_request.save
