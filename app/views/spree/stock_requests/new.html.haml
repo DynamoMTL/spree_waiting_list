@@ -1,6 +1,6 @@
 %h1= t("new_stock_request")
 = render "spree/shared/error_messages", :target => @stock_request
-= form_for @stock_request do |f|
+= form_for @stock_request, remote: true do |f|
   = f.hidden_field :product_id
   = f.hidden_field :variant_id
   %p
