@@ -6,7 +6,6 @@ class Spree::StockRequestsController < Spree::BaseController
 
   def create
     @stock_request = Spree::StockRequest.new(params[:stock_request])
-    @stock_request.email = current_user.email if current_user
 
     if @stock_request.save
       respond_to do |format|
