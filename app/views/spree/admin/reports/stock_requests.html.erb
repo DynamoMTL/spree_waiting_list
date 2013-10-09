@@ -27,7 +27,7 @@
   </thead>
   <tbody>
   <% @stock_requests.each do |stock_request| %>
-      <% next if stock_request.request.product.nil? %>
+      <% next if stock_request.product.nil? %>
       <tr class="cycle('even', 'odd')">
         <td><%= stock_request.email %></td>
         <td><%= link_to stock_request.product.name, edit_admin_product_path(stock_request.product) %></td>
