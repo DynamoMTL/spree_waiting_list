@@ -1,4 +1,5 @@
 class Spree::StockRequestsController < Spree::BaseController
+  layout false
   def new
     @stock_request = Spree::StockRequest.new(params[:stock_request])
   end
