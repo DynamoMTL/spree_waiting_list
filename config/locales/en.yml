@@ -1,14 +1,16 @@
 ---
 en:
-  back_in_stock_subject: Hey! %{product_name} is back in stock 
-  successful_stock_request: Thanks! we will notify you as soon as the item is back in stock
-  new_stock_request: Request New Stock Notification
-  submit_stock_request: Send Request
-  stock_requests: Stock Requests
   out_of_stock_product_requests: Requests for out of stock products
-  created_at: Created
-  ago: ago
-  variant: Variant
-  download: Download
-  show_all: Show all
-  requested: requested
+  spree:
+    stock_requests: Stock Requests
+    created_at: Created
+    ago: ago
+    show_all: Show all
+    download: Download
+    variant: Variant
+    back_in_stock_subject: Hey! %{product_name} is back in stock
+    successful_stock_request: Thanks! we will notify you as soon as the item is back in stock
+    stock_requests_description: 'Out of stock product requests'
+    new_stock_request: Request New Stock Notification
+    submit_stock_request: Send Request
+    requested: requested

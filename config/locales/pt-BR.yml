@@ -1,0 +1,16 @@
+---
+pt-BR:
+  out_of_stock_product_requests: Solicitações para produtos sem estoque
+  spree:
+    stock_requests: Solicitações de Produtos Indisponíveis
+    created_at: Criado
+    ago: atrás
+    show_all: Mostrar todos
+    download: Download
+    variant: Variante
+    back_in_stock_subject: Olá! %{product_name} está disponível novamente
+    successful_stock_request: Obrigado! Nós o notificaremos assim que o produto estiver disponível
+    stock_requests_description: Solicitações de Produtos não disponíveis
+    new_stock_request: Nova Solicitação de Produto Indisponível
+    submit_stock_request: Enviar Solicitação
+    requested: solicitado
