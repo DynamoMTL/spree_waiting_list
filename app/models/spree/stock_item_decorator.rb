@@ -11,8 +11,7 @@ module Spree
       yield
 
       if available
-        variant.stock_requests.notified(false).each &:notify!
-        variant.product.stock_requests.without_variant.notified(false).each &:notify!
+        variant.notify_waiting_list
       end
     end
 
