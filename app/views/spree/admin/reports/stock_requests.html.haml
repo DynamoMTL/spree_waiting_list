@@ -1,40 +1,27 @@
-.toolbar
-  %ul.actions
-    %li
-      = button_link_to Spree.t(:download), stock_requests_admin_reports_path(@search.search_attributes.merge(:format => :csv)), {:icon => 'xls'}
-  %br.clear
-
-%h1= Spree.t(:stock_requests)
-
-%table.index
-  %tr
-    %th= sort_link @search, :email
-    %th= Spree.t(:product)
-    %th= Spree.t(:variant)
-    %th= sort_link @search, :status
-    %th= sort_link @search, :created_at, Spree.t(:requested)
-
-  - @stock_requests.each do |stock_request|
-    %tr{:class => cycle('even','odd')}
-      %td= stock_request.email
-      %td= link_to stock_request.product.name, edit_admin_product_path(stock_request.product)
-      %td= stock_request.variant.options_text if stock_request.variant
-      %td= stock_request.status.titleize
-      %td
-        = time_ago_in_words(stock_request.created_at)
-        = Spree.t(:ago)
-
-= paginate @stock_requests
-
-- content_for :sidebar do
-  = form_for @search, :url => stock_requests_admin_reports_path do |f|
-    .box
-      %h3= Spree.t(:search)
-      %p
-        = f.label :product_variants_sku_contains, Spree.t(:sku)
-        = f.text_field :product_variants_sku_contains, :size => 15
-      %p
-        = f.label :status_equals, Spree.t(:status)
-        = f.select :status_equals, %w(new notified).collect {|s| [s.titleize,s]}, :include_blank => Spree.t(:show_all)
-      %p.form-buttons
-        = button Spree.t(:search)
+- content_for :page_title do
+  = Spree.t(:stock_requests)
+- content_for :page_actions do
+  %li= link_to_with_icon 'icon-arrow-left', Spree.t(:back_to_reports_list), spree.admin_reports_url, :class => 'button'
+- content_for :table_filter_title do
+  = Spree.t(:date_range)
+- content_for :table_filter do
+  = render :partial => 'spree/admin/shared/stock_report_criteria', :locals => {}
+%table.admin-report{"data-hook" => "stock_requests"}
+  %thead
+    %tr
+      %th= sort_link @search, :email
+      %th= Spree.t(:product)
+      %th= Spree.t(:variant)
+      %th= sort_link @search, :status
+      %th= sort_link @search, :created_at, Spree.t(:requested)
+  %tbody
+    - @stock_requests.each do |stock_request|
+      - next if stock_request.product.nil?
+      %tr{:class => "cycle('even', 'odd')"}
+        %td= stock_request.email
+        %td= link_to stock_request.product.name, edit_admin_product_path(stock_request.product)
+        %td= stock_request.variant.options_text if stock_request.variant
+        %td= stock_request.status.titleize
+        %td
+          = time_ago_in_words(stock_request.created_at)
+          = Spree.t(:ago)
