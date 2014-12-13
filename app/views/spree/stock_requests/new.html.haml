@@ -1,0 +1,12 @@
+%h1= Spree.t(:new_stock_request)
+  = render "spree/shared/error_messages", :target => @stock_request
+  = form_for @stock_request do |f|
+    = f.hidden_field :product_id
+    = f.hidden_field :variant_id
+    %p
+      = f.label :email
+      - if spree_current_user
+        = spree_current_user.email
+      - else
+        = f.text_field :email
+    = f.submit Spree.t(:submit_stock_request)

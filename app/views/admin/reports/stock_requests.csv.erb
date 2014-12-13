@@ -1,9 +1,0 @@
-<%= %w(email sku product variant status requested).collect{|h| "\"#{t(h)}\""}.join(',').html_safe %> 
-<% @stock_requests.each do |request| %>
-<%= [request.email, 
-     request.variant ? request.variant.sku : request.product.sku,
-     request.product.name,
-     request.variant ? request.variant.options_text : '',
-     request.status.titleize,
-     request.created_at.to_s(:short)].collect{|cell| "\"#{cell}\"" }.join(",").html_safe %>
-<% end %>

@@ -1,0 +1,10 @@
+= search_form_for @search, :url => spree.stock_requests_admin_reports_path  do |s|
+  .date-range-filter.field.align-center
+    = label_tag nil, Spree.t(:start), :class => 'inline'
+    = s.text_field :created_at_gt, :class => 'datepicker datepicker-from'
+    %span.range-divider
+      %i.icon-arrow-right
+    = s.text_field :created_at_lt, :class => 'datepicker datepicker-to'
+    = label_tag nil, Spree.t(:end), :class => 'inline'
+  .actions.filter-actions
+    = button Spree.t(:search), 'icon-search'

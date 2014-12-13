@@ -1,0 +1,27 @@
+- content_for :page_title do
+  = Spree.t(:stock_requests)
+- content_for :page_actions do
+  %li= link_to_with_icon 'icon-arrow-left', Spree.t(:back_to_reports_list), spree.admin_reports_url, :class => 'button'
+- content_for :table_filter_title do
+  = Spree.t(:date_range)
+- content_for :table_filter do
+  = render :partial => 'spree/admin/shared/stock_report_criteria', :locals => {}
+%table.admin-report{"data-hook" => "stock_requests"}
+  %thead
+    %tr
+      %th= sort_link @search, :email
+      %th= Spree.t(:product)
+      %th= Spree.t(:variant)
+      %th= sort_link @search, :status
+      %th= sort_link @search, :created_at, Spree.t(:requested)
+  %tbody
+    - @stock_requests.each do |stock_request|
+      - next if stock_request.product.nil?
+      %tr{:class => "cycle('even', 'odd')"}
+        %td= stock_request.email
+        %td= link_to stock_request.product.name, edit_admin_product_path(stock_request.product)
+        %td= stock_request.variant.options_text if stock_request.variant
+        %td= stock_request.status.titleize
+        %td
+          = time_ago_in_words(stock_request.created_at)
+          = Spree.t(:ago)
