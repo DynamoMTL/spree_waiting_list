@@ -1,6 +1,6 @@
 Spree Waiting List
 ================
-[![Code Climate](https://codeclimate.com/github/ddomingues/spree_waiting_list/badges/gpa.svg)](https://codeclimate.com/github/ddomingues/spree_waiting_list)
+[![Code Climate](https://codeclimate.com/github/DynamoMTL/spree_waiting_list/badges/gpa.svg)](https://codeclimate.com/github/DynamoMTL/spree_waiting_list)
 
 A waiting list extension for Spree.
 
