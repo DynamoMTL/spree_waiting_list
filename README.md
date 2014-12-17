@@ -1,6 +1,6 @@
 Spree Waiting List
 ================
-[![Code Climate](https://codeclimate.com/github/DynamoMTL/spree_waiting_list/badges/gpa.svg)](https://codeclimate.com/github/DynamoMTL/spree_waiting_list) [![Build Status](https://travis-ci.org/DynamoMTL/spree_waiting_list.svg?branch=master)](https://travis-ci.org/DynamoMTL/spree_waiting_list)
+[![Code Climate](https://codeclimate.com/github/DynamoMTL/spree_waiting_list/badges/gpa.svg)](https://codeclimate.com/github/DynamoMTL/spree_waiting_list) [![Build Status](https://travis-ci.org/DynamoMTL/spree_waiting_list.svg?branch=master)](https://travis-ci.org/DynamoMTL/spree_waiting_list) [![Gem Version](https://badge.fury.io/rb/spree_waiting_list.svg)](http://badge.fury.io/rb/spree_waiting_list)
 
 A waiting list extension for Spree.
 
