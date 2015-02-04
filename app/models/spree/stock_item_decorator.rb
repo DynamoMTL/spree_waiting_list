@@ -1,7 +1,5 @@
 module Spree
-
   StockItem.class_eval do
-
     around_save :notify_availability
 
     private
@@ -14,7 +12,5 @@ module Spree
         variant.notify_waiting_list
       end
     end
-
   end
-
 end

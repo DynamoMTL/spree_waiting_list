@@ -2,85 +2,81 @@ require 'spec_helper'
 
 module Spree
 
-    describe StockRequestsController do
+  describe StockRequestsController do
 
-      let(:user) {create(:user_with_addreses)}
-      let!(:product) {create(:product)}
+    let(:user) { create(:user_with_addreses) }
+    let!(:variant) { create(:master_variant) }
 
-      before do
-        controller.stub :try_spree_current_user => nil
-      end
+    before do
+      controller.stub :try_spree_current_user => nil
+    end
 
-      it '#new' do
+    it '#new' do
+      spree_get :new, stock_request: {variant_id: variant.id}
 
-        spree_get :new, stock_request: { product_id: product.id}
+      expect(response).to be_success
+    end
 
-        expect(response).to be_success
+    context '#create' do
 
-      end
+      context 'valid data' do
 
-      context '#create' do
+        USER_MAIL = 'user@gmail.com'
 
-        context 'valid data' do
+        it 'html format' do
+          spree_post :create, :stock_request => {email: USER_MAIL, variant_id: variant.id}
 
-          USER_MAIL = 'user@gmail.com'
-
-          it 'html format' do
-            spree_post :create, :stock_request => { email: USER_MAIL, product_id: product.id, variant_id: product.master.id}
-
-            expect(response).to redirect_to(spree.root_path)
-            expect(flash[:notice]).to eql(Spree.t(:successful_stock_request))
-            expect(Spree::StockRequest.where(email: USER_MAIL).first).to_not be_nil
-
-          end
-
-          it 'js format' do
-
-            spree_post :create, {:stock_request => { email: USER_MAIL, product_id: product.id, variant_id: product.master.id}, :format => :js}
-
-            expect(response).to be_success
-            expect(response).to render_template('create')
-
-          end
-
-          context 'logged in' do
-
-            before do
-              controller.stub :try_spree_current_user => user
-            end
-
-            it 'should set email' do
-              spree_post :create, stock_request: {product_id: product.id, variant_id: product.master.id}
-
-              expect(Spree::StockRequest.where(email: user.email).first).to_not be_nil
-            end
-          end
+          expect(response).to redirect_to(spree.root_path)
+          expect(flash[:notice]).to eql(Spree.t(:successful_stock_request))
+          expect(Spree::StockRequest.where(email: USER_MAIL).first).to_not be_nil
 
         end
 
-        context 'invalid data' do
+        it 'js format' do
 
-          it 'raises an exception' do
-            expect { spree_post :create }.to raise_error ActionController::ParameterMissing
+          spree_post :create, {:stock_request => {email: USER_MAIL, variant_id: variant.id}, :format => :js}
+
+          expect(response).to be_success
+          expect(response).to render_template('create')
+
+        end
+
+        context 'logged in' do
+
+          before do
+            controller.stub :try_spree_current_user => user
           end
 
-          context 'show messages validation' do
+          it 'should set email' do
+            spree_post :create, stock_request: {variant_id: variant.id}
 
-            it 'html format' do
-              spree_post :create, stock_request: {email: 'user'}
+            expect(Spree::StockRequest.where(email: user.email).first).to_not be_nil
+          end
+        end
 
-              expect(response).to render_template('new')
-            end
+      end
 
-            it 'js format' do
-              spree_xhr_post :create, {:stock_request => {email: 'user'}}
+      context 'invalid data' do
 
-              expect(response.status).to eql(Rack::Utils::SYMBOL_TO_STATUS_CODE[:unprocessable_entity])
-            end
+        it 'raises an exception' do
+          expect { spree_post :create }.to raise_error ActionController::ParameterMissing
+        end
+
+        context 'show messages validation' do
+
+          it 'html format' do
+            spree_post :create, stock_request: {email: 'user'}
+
+            expect(response).to render_template('new')
+          end
+
+          it 'js format' do
+            spree_xhr_post :create, {:stock_request => {email: 'user'}}
+
+            expect(response.status).to eql(Rack::Utils::SYMBOL_TO_STATUS_CODE[:unprocessable_entity])
           end
         end
       end
     end
-
+  end
 end
-

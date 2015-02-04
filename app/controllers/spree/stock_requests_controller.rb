@@ -26,7 +26,5 @@ module Spree
     def stock_request_params
       params.require(:stock_request).permit(permitted_attributes.stock_request_attributes)
     end
-
   end
 end
-

@@ -1,8 +1,7 @@
 FactoryGirl.define do
 
   factory :stock_request, class: Spree::StockRequest do
-    product
-    variant {product.master}
+    variant
     email 'test@home.org'
   end
 
