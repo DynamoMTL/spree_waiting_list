@@ -23,10 +23,11 @@ require 'ffaker'
 # in spec/support/ and its subdirectories.
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 
-# Requires factories defined in spree_core
-require 'spree/testing_support/factories'
-require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/authorization_helpers'
+require 'spree/testing_support/factories'
+require 'spree/testing_support/preferences'
+require 'spree/testing_support/controller_requests'
+require 'spree/testing_support/flash'
 require 'spree/testing_support/url_helpers'
 
 # Requires factories defined in lib/spree_simple_teste/factories.rb
@@ -41,9 +42,10 @@ RSpec.configure do |config|
   #
   # visit spree.admin_path
   # current_path.should eql(spree.products_path)
+  config.include Spree::TestingSupport::Preferences
   config.include Spree::TestingSupport::UrlHelpers
-  config.include Spree::TestingSupport::AuthorizationHelpers::Controller
   config.include Spree::TestingSupport::ControllerRequests
+  config.include Spree::TestingSupport::Flash
 
   # == Mock Framework
   #
@@ -87,7 +89,3 @@ RSpec.configure do |config|
   config.fail_fast = ENV['FAIL_FAST'] || false
   config.order = "random"
 end
-
-# def create_user
-#   User.create(:confirmed => true, :password => 'test123', :password_confirmation => 'test123', :email => 'john@example.com')
-# end

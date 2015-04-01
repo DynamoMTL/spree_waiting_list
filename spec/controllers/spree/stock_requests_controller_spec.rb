@@ -2,13 +2,13 @@ require 'spec_helper'
 
 module Spree
 
-  describe StockRequestsController do
+  describe StockRequestsController, :type => :controller do
 
     let(:user) { create(:user_with_addreses) }
     let!(:variant) { create(:master_variant) }
 
     before do
-      controller.stub :try_spree_current_user => nil
+      allow(controller).to receive_messages(:try_spree_current_user => nil)
     end
 
     it '#new' do
@@ -44,7 +44,7 @@ module Spree
         context 'logged in' do
 
           before do
-            controller.stub :try_spree_current_user => user
+            allow(controller).to receive_messages(:try_spree_current_user => user)
           end
 
           it 'should set email' do

@@ -30,7 +30,7 @@ First bundle your dependencies, then run `rake`. `rake` will default to building
 
 ```shell
 bundle
-bundle exec rake
+bundle exec rspec spec
 ```
 
 When testing your applications integration with this extension you may use it's factories.
@@ -41,4 +41,4 @@ require 'spree_waiting_list/factories'
 ```
 
 
-Copyright (c) 2011 Joshua Nussbaum, released under the New BSD License
+Copyright (c) 2015 Joshua Nussbaum, released under the New BSD License

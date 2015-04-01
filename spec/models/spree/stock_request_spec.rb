@@ -7,7 +7,7 @@ module Spree
     subject { create(:stock_request) }
 
     it { expect(subject).to be_valid }
-    it { subject.status.should == 'new' }
+    it { expect(subject.status).to eq('new') }
 
     it 'should validate email' do
       subject.email = 'garbage'
@@ -20,8 +20,8 @@ module Spree
 
       before do
         mail = double(:mail)
-        UserMailer.should_receive(:back_in_stock).with(subject).and_return(mail)
-        mail.should_receive(:deliver)
+        expect(UserMailer).to receive(:back_in_stock).with(subject).and_return(mail)
+        expect(mail).to receive(:deliver)
         subject.notify!
       end
 
