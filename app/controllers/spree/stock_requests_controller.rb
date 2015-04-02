@@ -12,10 +12,11 @@ module Spree
 
       respond_to do |format|
         if @stock_request.save
-          format.html { redirect_to root_path, :notice => Spree.t(:successful_stock_request) }
+          format.html { redirect_to root_path, notice: Spree.t(:successful_stock_request) }
           format.js
+          format.json { render json: { status: 201, message: Spree.t(:successful_stock_request) } }
         else
-          format.html { render :action => 'new'}
+          format.html { render action: 'new'}
           format.json { render json: @stock_request.errors, status: :unprocessable_entity }
         end
       end

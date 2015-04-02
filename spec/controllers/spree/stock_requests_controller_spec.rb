@@ -4,6 +4,15 @@ module Spree
 
   describe StockRequestsController, :type => :controller do
 
+    def json_response
+      case body = JSON.parse(response.body)
+        when Hash
+          body.with_indifferent_access
+        when Array
+          body
+      end
+    end
+
     let(:user) { create(:user_with_addreses) }
     let!(:variant) { create(:master_variant) }
 
@@ -41,6 +50,13 @@ module Spree
 
         end
 
+        it 'json format' do
+          spree_xhr_post :create, {:stock_request => {email: USER_MAIL, variant_id: variant.id}}
+
+          expect(response).to be_success
+          expect(json_response[:message]).to eq(Spree.t(:successful_stock_request))
+        end
+
         context 'logged in' do
 
           before do
@@ -70,7 +86,7 @@ module Spree
             expect(response).to render_template('new')
           end
 
-          it 'js format' do
+          it 'json format' do
             spree_xhr_post :create, {:stock_request => {email: 'user'}}
 
             expect(response.status).to eql(Rack::Utils::SYMBOL_TO_STATUS_CODE[:unprocessable_entity])
