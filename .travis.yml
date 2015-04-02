@@ -15,3 +15,7 @@ branches:
   only:
     - master
     - 2-2-stable
+    - 2-3-stable
+addons:
+  code_climate:
+    repo_token: bff54e81747efae51a80babc7cadd216624d8166864c2350cba0886523b06afb
