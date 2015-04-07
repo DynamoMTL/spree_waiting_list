@@ -68,7 +68,7 @@ GIT
 PATH
   remote: .
   specs:
-    spree_waiting_list (2.3.1)
+    spree_waiting_list (2.3.2)
       haml (~> 4.0.6)
       spree_core (~> 2.3.9)
 

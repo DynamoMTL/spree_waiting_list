@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_waiting_list'
-  s.version     = '2.3.1'
+  s.version     = '2.3.2'
   s.summary     = 'Add a waiting list to your spree store'
   s.description = 'The waiting list allows users to signup to be notified via email when an items comes back into stock'
   s.required_ruby_version = '>= 1.9.3'
@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
   s.email             = 'joshnuss@gmail.com'
   s.homepage          = 'http://www.godynamo.com'
 
-  s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*']
+  #s.files       = `git ls-files`.split("\n")
+  #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 
