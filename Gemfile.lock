@@ -68,7 +68,7 @@ GIT
 PATH
   remote: .
   specs:
-    spree_waiting_list (2.3.3)
+    spree_waiting_list (2.3.4)
       haml (~> 4.0.6)
       spree_core (~> 2.3.9)
 
@@ -132,7 +132,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    childprocess (0.5.5)
+    childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
       activesupport (>= 3.0)
